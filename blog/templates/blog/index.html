@@ -1,0 +1,46 @@
+{% extends 'blog/main.html' %}
+{% load static %}
+{% block content %}
+<!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+         {% if messages %}
+         {% for message in messages %}
+               <div class="alert alert-{{message.tags}}">{{message}}</div>
+         {% endfor %}
+
+         {% endif %}
+
+        <h2 class="mb-4">
+			home page
+		</h2>
+      <button><a href="{% url 'post' %}" id="post">Create a Post</a></button>
+      <!-- </div> -->
+       {% for post in posts %}
+      <div class="container">
+         <img src="{{ post.user.passport.url }}" id="img" alt="this is a picture">
+         <div>
+      <h1 class="use">{{ post.Title }}
+         
+      </h1>
+            {% if user.username == post.user.username %}
+            <div>
+               <a href="{% url 'edit' post.id %}"><i class="fa fa-edit" style="color:blue"></i></a>
+               <a href="{% url 'delete' post.id %}"><i class="fa fa-trash" style="color:blue"></i></a>
+               </div>
+           {% endif %}
+          
+         <p class="dem"> {{ post.Content}} </p>
+         <div class="auth">
+            <p>Author: {{post.user.username}}</p>
+            <p>Date Created: {{ post.Date}}</p>
+            <!-- <p>Last Modified: </p> -->
+         </div>
+      </div>
+      </div>
+      {% endfor %}
+
+
+
+		</div>
+
+   {% endblock content %}

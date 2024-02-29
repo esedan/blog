@@ -1,0 +1,68 @@
+{% extends 'blog/main.html' %}
+{% block content %}
+<div id="content" class="p-4 p-md-5 pt-5">
+    {% if messages %}
+    {% for message in messages %}
+          <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
+
+    {% endif %}
+    
+        <img src="{{ user.passport.url }}" alt="" class="rounded-circle account-img">
+
+    <h3 id="me" class="mb-4" > {{ username }} </h3>
+    <div class="row">
+        <div class="col-12">
+            <center>
+                <form enctype="multipart/form-data"style="background-color:grey;  padding:15px 0px;" method="post">
+                        {% csrf_token %}
+                <div class="form-group">
+                    <label for="" class="text-light h6">Username</label>
+                        <input class="ted form-control" type="text" value="{{ username }}" name="user" placeholder="Username">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="" class="text-light h6">Email</label>
+                    <input class="ted form-control" type="email" value="{{ email }}" name="email" placeholder="Email">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="" class="text-light h6">Lastname</label>
+                <input class="ted form-control" type="text" value="{{ lastname }}" name="last" placeholder="lastname">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="" class="text-light h6">Firstname</label>
+                    <input class="ted form-control" type="text" value="{{ firstname }}" name="first" placeholder="firstname">
+                </div>
+                    <br>
+                
+                <div class="form-group">
+                    <label for="" class="text-light h6">Mobile</label>
+                        <input class="ted form-control" type="text" value="{{ mobile }}" name="mobile" placeholder="mobile">
+                </div>
+                        <br>
+                  <div class="form-group">
+                            <input class="ted form-control" type="file" name="img" placeholder="passport">
+                </div>
+                <br><br>
+                <div class="form-group">
+                    <label for="" class="text-light h6">Password</label>
+                           <input class="ted form-control" type="text" value="{{ password }}" name="password" placeholder="password">
+               </div>
+               <br>
+                
+                            
+                        
+
+                <button type="submit" class="btn" id="rad">REGISTER</button>
+                <a href="{% url 'forgotpassword' %}">forgot password?</a>
+                </form>
+                </center>
+                
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

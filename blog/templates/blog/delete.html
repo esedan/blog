@@ -1,0 +1,12 @@
+{% extends 'blog/main.html' %}
+{% block content %}
+    <div id="content" class="p-4 p-md-5 pt-5">
+        <h2 class="mb-4">Confirm your delete</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Proceed</button>
+        </form>
+    </div>
+
+
+{% endblock content %}

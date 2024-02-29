@@ -1,0 +1,55 @@
+{% extends 'blog/main.html' %}
+{% block content %}
+<div id="content" class="p-4 p-md-5 pt-5">
+    {% if messages %}
+    {% for message in messages %}
+          <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
+
+    {% endif %}
+    <h3 id="me" class="mb-4" >REGISTER</h3>
+    <div class="row">
+        <div class="col-12">
+            <center>
+                <form style="background-color:grey;  padding:15px 0px;" method="post">
+                        {% csrf_token %}
+                    <div class="form-group">
+                        <input class="ted form-control" type="text" name="user" placeholder="Username">
+                    </div>
+                <br><br>
+                    <div class="form-group">
+                        <input class="ted form-control" type="text" name="first" placeholder="First Name">
+                    </div>
+                <br><br>
+                <div class="form-group">
+                    <input class="ted form-control" type="text" name="last" placeholder="Last Name">
+                </div>
+                    <br><br>
+                <div class="form-group">
+                    <input class="ted form-control" type="password" name="pass1" placeholder="Password">
+                </div>
+                    <br><br>
+                <div class="form-group">
+                    <input class="ted form-control" type="password" name="pass2" placeholder="Confirm Password">
+                </div>
+                <br><br>
+                <div class="form-group">    
+                    <input class="ted form-control" type="email" name="email1" placeholder="E-mail Address">
+                </div>
+                <br><br>
+                <div class="form-group">
+                    <input class="ted form-control" type="email" name="email2" placeholder="Confirm E-mail Address">
+                </div>
+                <div class="form-group">
+                    <input class="ted form-control" type="text" name="tel" placeholder="phone number">
+                </div>
+                <br><br>
+                <button type="submit" class="btn" id="rad">REGISTER</button>
+                <p>Already have na account <a href="{% url 'login'%}">click here</a>to login</p>
+                </form>
+                </center>
+                
+        </div>
+    </div>
+</div>
+{% endblock content %}
